@@ -1,0 +1,37 @@
+body {
+    color:blue;
+    font-size:20pt;
+}
+
+h1 {
+    color:red;
+    font-size:32pt;
+}
+
+p {
+    color:green;
+    margin:10px;
+}
+
+a {
+    color:yellow;
+}
+
+table {
+    margin:10px;
+    font-size:14pt;
+}
+
+table tr th {
+    background-color: rgb(43, 139, 204);
+    color:black;
+    padding:2px 10px;
+    border-width:2px;
+}
+
+table tr td {
+    background-color: rgb(43, 139, 204);
+    color:black;
+    padding:2px 10px;
+    border-width:2px;
+}

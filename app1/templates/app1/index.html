@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css"
+        href="{% static 'app1/css/style.css' %}"/>
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <p>{{msg|safe}}</p>　　　<!--ここから-->
+        <table>
+            <form aciton = "{%url 'index' % }" method = "POST">
+                {% csrf_token %}
+                {{form.as_table}}
+            <tr><td></td><td><input type = "submit" value = "検索"></td></tr>
+            </form>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                    <th>no</th>
+                    <th>日付</th>
+                    <th>名前</th>
+                    <th>朝食</th>
+                    <th>昼食</th>
+                    <th>夕食</th>
+                    <th>外食</th>
+                    <th>飲酒</th>
+                    <th>運動</th>
+                    <th>ストレッチ</th>
+                    <th>勉強</th>
+                    <th>起床時間</th>
+                    <th>就寝時間</th>
+                    <th>健康</th>
+                    <th>仕事の調子</th>
+            </tr>
+            {%for item in data %}
+            <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{% if item.breakfast == False %}No{% endif %}
+                        {% if item.breakfast == True %}Yes{% endif %}</td>
+                    <td>{% if item.lunch == False %}No{% endif %}
+                        {% if item.lunch == True %}Yes{% endif %}</td>
+                    <td>{% if item.dinner == False %}No{% endif %}
+                        {% if item.dinner == True %}Yes{% endif %}</td>
+                    <td>{% if item.eatout == False %}No{% endif %}
+                        {% if item.eatout == True %}Yes{% endif %}</td>
+                    <td>{% if item.drinking == False %}No{% endif %}
+                        {% if item.drinking == True %}Yes{% endif %}</td>
+                    <td>{% if item.workout == False %}No{% endif %}
+                        {% if item.workout == True %}Yes{% endif %}</td>
+                    <td>{% if item.stretch == False %}No{% endif %}
+                        {% if item.stretch == True %}Yes{% endif %}</td>
+                    <td>{% if item.studying == False %}No{% endif %}
+                        {% if item.studying == True %}Yes{% endif %}</td>
+                    <td>{{item.awaketime}}</td>
+                    <td>{{item.asleeptime}}</td>
+                    <td>{{item.kenkobody}}</td>
+                    <td>{{item.workcond}}</td>
+
+            </tr>
+            {% endfor %}<!--ここまで-->
+        </table>
+    </body>
+</html>
